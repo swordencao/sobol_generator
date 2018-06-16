@@ -1,5 +1,5 @@
 MPICXX=mpic++
-CXX_FLAGS=-std=c++14 -O2 -march=native -pedantic -Wall -Wextra -Wno-unused
+CXX_FLAGS=-std=gnu14 -O2 -march=native -pedantic -Wall -Wextra -Wno-unused
 
 all: example
 
