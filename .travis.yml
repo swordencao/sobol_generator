@@ -1,0 +1,22 @@
+language: cpp
+sudo: true
+
+before_install:
+  - sudo apt update -qq
+  # install OpenMPI
+  - sudo apt install openmpi-bin openmpi-common openssh-client openssh-server libopenmpi1.3 libopenmpi-dbg libopenmpi-dev
+  # install wget
+  - sudo apt install wget
+
+script:
+  - make -j
+  # use standard sobol direction numbers
+  - wget http://web.maths.unsw.edu.au/%7Efkuo/sobol/new-joe-kuo-6.21201 -O direction
+  - ./example direction
+  - mpirun -np 4 ./example direction
+
+after_success:
+  - echo "run test success"
+ 
+after_failure:
+  - echo "run test failure"
